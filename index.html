@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Naranjo Automóviles - Venta de autos usados en Santa Lucía, Canelones, Uruguay. Ruta 11 km 88.500.">
+  <title>Naranjo Automóviles | Santa Lucía, Uruguay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ══════════════════ NAVBAR ══════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-white">NARANJO</span><span class="logo-orange">AUTO</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#catalogo" class="nav-link">Catálogo</a>
+        <a href="#pagos" class="nav-link">Formas de Pago</a>
+        <a href="#nosotros" class="nav-link">Nosotros</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+        <a href="#ubicacion" class="nav-link">Ubicación</a>
+        <button class="btn-admin-nav" id="btnAdminNav" onclick="toggleAdmin()">Admin</button>
+      </div>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════ HERO ══════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-badge">📍 Santa Lucía, Canelones, Uruguay</span>
+      <h1 class="hero-title">
+        <span class="hero-title-white">NARANJO</span>
+        <span class="hero-title-orange">AUTOMÓVILES</span>
+      </h1>
+      <p class="hero-tagline">Tu próximo auto, a la vuelta de la esquina</p>
+      <p class="hero-sub">Más de 15 años eligiendo el mejor auto para familias uruguayas</p>
+      <div class="hero-ctas">
+        <a href="#catalogo" class="btn-primary">Ver autos disponibles</a>
+        <a href="#contacto" class="btn-outline">Contactar ahora</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><span class="hs-num">15+</span><span class="hs-label">Años en el mercado</span></div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat"><span class="hs-num">500+</span><span class="hs-label">Autos vendidos</span></div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat"><span class="hs-num">98%</span><span class="hs-label">Clientes satisfechos</span></div>
+      </div>
+    </div>
+    <div class="hero-scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-bar"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ MARQUEE MARCAS ══════════════════ -->
+  <div class="marcas-strip">
+    <div class="marquee-track">
+      <div class="marquee-inner" id="marqueeInner">
+        <span class="marca">TOYOTA</span><span class="sep">◆</span>
+        <span class="marca">VOLKSWAGEN</span><span class="sep">◆</span>
+        <span class="marca">CHEVROLET</span><span class="sep">◆</span>
+        <span class="marca">FORD</span><span class="sep">◆</span>
+        <span class="marca">RENAULT</span><span class="sep">◆</span>
+        <span class="marca">PEUGEOT</span><span class="sep">◆</span>
+        <span class="marca">FIAT</span><span class="sep">◆</span>
+        <span class="marca">HONDA</span><span class="sep">◆</span>
+        <span class="marca">NISSAN</span><span class="sep">◆</span>
+        <span class="marca">HYUNDAI</span><span class="sep">◆</span>
+        <span class="marca">CITROËN</span><span class="sep">◆</span>
+        <span class="marca">SUZUKI</span><span class="sep">◆</span>
+      </div>
+      <div class="marquee-inner" aria-hidden="true">
+        <span class="marca">TOYOTA</span><span class="sep">◆</span>
+        <span class="marca">VOLKSWAGEN</span><span class="sep">◆</span>
+        <span class="marca">CHEVROLET</span><span class="sep">◆</span>
+        <span class="marca">FORD</span><span class="sep">◆</span>
+        <span class="marca">RENAULT</span><span class="sep">◆</span>
+        <span class="marca">PEUGEOT</span><span class="sep">◆</span>
+        <span class="marca">FIAT</span><span class="sep">◆</span>
+        <span class="marca">HONDA</span><span class="sep">◆</span>
+        <span class="marca">NISSAN</span><span class="sep">◆</span>
+        <span class="marca">HYUNDAI</span><span class="sep">◆</span>
+        <span class="marca">CITROËN</span><span class="sep">◆</span>
+        <span class="marca">SUZUKI</span><span class="sep">◆</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ CATÁLOGO ══════════════════ -->
+  <section class="catalogo" id="catalogo">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Nuestros Vehículos</span>
+        <h2 class="section-title">Catálogo de Autos</h2>
+        <p class="section-sub">Encontrá tu próximo vehículo entre nuestra selección</p>
+      </div>
+
+      <!-- Filtros -->
+      <div class="filtros-bar">
+        <div class="filtro-group">
+          <label class="filtro-label">Marca</label>
+          <select class="filtro-select" id="filtroMarca" onchange="aplicarFiltros()">
+            <option value="">Todas las marcas</option>
+          </select>
+        </div>
+        <div class="filtro-group">
+          <label class="filtro-label">Año</label>
+          <select class="filtro-select" id="filtroAnio" onchange="aplicarFiltros()">
+            <option value="">Todos los años</option>
+          </select>
+        </div>
+        <div class="filtro-group filtro-precio-group">
+          <label class="filtro-label">Precio USD</label>
+          <div class="precio-range">
+            <input type="number" class="filtro-input" id="precioMin" placeholder="Mín" min="0" onchange="aplicarFiltros()">
+            <span class="precio-sep">–</span>
+            <input type="number" class="filtro-input" id="precioMax" placeholder="Máx" min="0" onchange="aplicarFiltros()">
+          </div>
+        </div>
+        <button class="btn-limpiar" onclick="limpiarFiltros()">✕ Limpiar filtros</button>
+      </div>
+
+      <!-- Admin bar -->
+      <div class="admin-bar" id="adminBar">
+        <div class="admin-badge">🔑 Modo Administrador activo</div>
+        <button class="btn-agregar" onclick="abrirModalAgregar()">＋ Agregar vehículo</button>
+        <button class="btn-salir-admin" onclick="salirAdmin()">Salir</button>
+      </div>
+
+      <!-- Grid -->
+      <div class="autos-grid" id="autosGrid"></div>
+      <div class="no-results" id="noResults">
+        <span class="nr-icon">🔍</span>
+        <p>No se encontraron autos con esos filtros</p>
+        <button class="btn-outline-sm" onclick="limpiarFiltros()">Limpiar filtros</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ MÉTODOS DE PAGO ══════════════════ -->
+  <section class="pagos" id="pagos">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Facilidades</span>
+        <h2 class="section-title">Métodos de Pago</h2>
+        <p class="section-sub">Múltiples opciones para que te lleves tu auto hoy</p>
+      </div>
+      <div class="pagos-grid">
+        <div class="pago-card">
+          <div class="pago-icon">💵</div>
+          <h3>Efectivo</h3>
+          <p>Aceptamos dólares americanos (USD) y pesos uruguayos (UYU). Precio especial al contado.</p>
+        </div>
+        <div class="pago-card">
+          <div class="pago-icon">🏦</div>
+          <h3>Transferencia Bancaria</h3>
+          <p>Transferencias en dólares o pesos a través de cualquier banco uruguayo. Operación segura.</p>
+        </div>
+        <div class="pago-card pago-card--featured">
+          <div class="pago-icon">🔄</div>
+          <h3>Permuta / Parte de Pago</h3>
+          <p>Recibimos tu auto como parte de pago. Valuamos tu vehículo al mejor precio del mercado.</p>
+        </div>
+        <div class="pago-card">
+          <div class="pago-icon">📋</div>
+          <h3>Financiación</h3>
+          <p>Coordinamos con las principales financieras del país. El plan de cuotas que mejor se adapte a vos.</p>
+        </div>
+        <div class="pago-card">
+          <div class="pago-icon">📝</div>
+          <h3>Cheques</h3>
+          <p>Aceptamos cheques de plaza. Consultanos por condiciones y requisitos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ NOSOTROS ══════════════════ -->
+  <section class="nosotros" id="nosotros">
+    <div class="container">
+      <div class="nosotros-grid">
+        <div class="nosotros-text">
+          <div class="section-header section-header--left">
+            <span class="section-tag">Nuestra Historia</span>
+            <h2 class="section-title">Más de 15 años eligiendo autos para familias uruguayas</h2>
+          </div>
+          <p class="nosotros-p">Naranjo Automóviles nació en Santa Lucía, Canelones, con el firme propósito de ofrecer vehículos de calidad a precios justos. Somos una empresa familiar que construyó su reputación basándose en la honestidad, el trato personalizado y la confianza.</p>
+          <p class="nosotros-p">Cada auto que ofrecemos pasa por una revisión mecánica exhaustiva para garantizarte las mejores condiciones. La mayoría de nuestros clientes vuelven y nos recomiendan a sus familias y amigos.</p>
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-year">2009</div>
+              <div class="tl-line"></div>
+              <div class="tl-text">Fundación de Naranjo Automóviles en Santa Lucía</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">2014</div>
+              <div class="tl-line"></div>
+              <div class="tl-text">Ampliación del local y del catálogo de vehículos</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">2019</div>
+              <div class="tl-line"></div>
+              <div class="tl-text">Incorporación de servicio de financiación</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-year">2026</div>
+              <div class="tl-line"></div>
+              <div class="tl-text">Más de 500 familias con su auto Naranjo</div>
+            </div>
+          </div>
+        </div>
+        <div class="nosotros-right">
+          <div class="nosotros-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1562141961-b8a2d5e3e1e1?w=700&auto=format&fit=crop&q=80"
+              alt="Local Naranjo Automóviles"
+              loading="lazy"
+              onerror="this.src='https://images.unsplash.com/photo-1568844293986-8d0400bd4745?w=700&auto=format&fit=crop&q=80'"
+              class="nosotros-img"
+            >
+          </div>
+          <div class="contadores" id="contadores">
+            <div class="contador">
+              <div class="contador-val">
+                <span class="contador-num" data-target="15">0</span><span class="contador-sufijo">+</span>
+              </div>
+              <p>Años en el mercado</p>
+            </div>
+            <div class="contador">
+              <div class="contador-val">
+                <span class="contador-num" data-target="500">0</span><span class="contador-sufijo">+</span>
+              </div>
+              <p>Autos vendidos</p>
+            </div>
+            <div class="contador">
+              <div class="contador-val">
+                <span class="contador-num" data-target="98">0</span><span class="contador-sufijo">%</span>
+              </div>
+              <p>Clientes satisfechos</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ CONTACTO ══════════════════ -->
+  <section class="contacto" id="contacto">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Hablemos</span>
+        <h2 class="section-title">Contacto</h2>
+        <p class="section-sub">Estamos para ayudarte a encontrar tu auto ideal</p>
+      </div>
+      <div class="contacto-grid">
+        <div class="contacto-info">
+          <div class="cinfo-item">
+            <div class="cinfo-icon">📞</div>
+            <div class="cinfo-body">
+              <h4>Teléfonos</h4>
+              <a href="tel:094600138">094 600 138</a>
+              <a href="tel:099807204">099 807 204</a>
+            </div>
+          </div>
+          <div class="cinfo-item">
+            <div class="cinfo-icon">📷</div>
+            <div class="cinfo-body">
+              <h4>Instagram</h4>
+              <a href="https://instagram.com/naranjoautomoviles" target="_blank" rel="noopener">@naranjoautomoviles</a>
+            </div>
+          </div>
+          <div class="cinfo-item">
+            <div class="cinfo-icon">🕐</div>
+            <div class="cinfo-body">
+              <h4>Horario de atención</h4>
+              <p>Lunes a Viernes: 8:00 - 18:00</p>
+              <p>Sábados: Mañana</p>
+            </div>
+          </div>
+          <div class="cinfo-item">
+            <div class="cinfo-icon">📍</div>
+            <div class="cinfo-body">
+              <h4>Dirección</h4>
+              <p>Ruta 11 km 88.500</p>
+              <p>Santa Lucía, Canelones, Uruguay</p>
+            </div>
+          </div>
+          <a href="https://wa.me/59894600138?text=Hola%2C%20vi%20su%20web%20y%20quisiera%20consultar%20sobre%20sus%20veh%C3%ADculos."
+             target="_blank" rel="noopener" class="btn-wsp-contact">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Escribir por WhatsApp
+          </a>
+        </div>
+        <div class="contacto-form-wrap">
+          <form id="formContacto" class="contacto-form" onsubmit="enviarFormulario(event)">
+            <h3>Envianos un mensaje</h3>
+            <div class="form-group">
+              <label for="cNombre">Nombre completo</label>
+              <input type="text" id="cNombre" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="cTelefono">Teléfono</label>
+              <input type="tel" id="cTelefono" placeholder="Tu número" required>
+            </div>
+            <div class="form-group">
+              <label for="cMensaje">Mensaje</label>
+              <textarea id="cMensaje" rows="4" placeholder="¿En qué te podemos ayudar?" required></textarea>
+            </div>
+            <button type="submit" class="btn-primary btn-full">Enviar mensaje</button>
+            <div class="form-success" id="formSuccess">✅ ¡Mensaje enviado! Te contactaremos a la brevedad.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ UBICACIÓN ══════════════════ -->
+  <section class="ubicacion" id="ubicacion">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Dónde estamos</span>
+        <h2 class="section-title">Ubicación</h2>
+        <p class="section-sub">Visitanos en Santa Lucía, Canelones</p>
+      </div>
+    </div>
+    <div class="mapa-wrap">
+      <iframe
+        src="https://maps.google.com/maps?q=Ruta+11+km+88.5+Santa+Lucia+Canelones+Uruguay&z=15&output=embed"
+        width="100%"
+        height="450"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Ubicación Naranjo Automóviles">
+      </iframe>
+    </div>
+    <div class="container">
+      <div class="ubicacion-cards">
+        <div class="ubic-card">
+          <span class="ubic-icon">📍</span>
+          <h4>Dirección</h4>
+          <p>Ruta 11 km 88.500, Santa Lucía, Canelones, Uruguay</p>
+        </div>
+        <div class="ubic-card">
+          <span class="ubic-icon">🚗</span>
+          <h4>Cómo llegar</h4>
+          <p>Sobre la Ruta 11 a 88.5 km de Montevideo, dirección Santa Lucía. Local visible desde la ruta.</p>
+        </div>
+        <div class="ubic-card">
+          <span class="ubic-icon">🚌</span>
+          <h4>Transporte público</h4>
+          <p>Ómnibus línea Montevideo – Santa Lucía. Parada km 88, Ruta 11.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ FOOTER ══════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo"><span>NARANJO</span><span class="fl-orange">AUTOMÓVILES</span></div>
+          <p>Tu próximo auto, a la vuelta de la esquina. Santa Lucía, Canelones, Uruguay.</p>
+          <div class="footer-socials">
+            <a href="https://instagram.com/naranjoautomoviles" target="_blank" rel="noopener" class="fsocial">📷 Instagram</a>
+            <a href="https://wa.me/59894600138" target="_blank" rel="noopener" class="fsocial">💬 WhatsApp</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <a href="#catalogo">Catálogo</a>
+          <a href="#pagos">Formas de pago</a>
+          <a href="#nosotros">Nosotros</a>
+          <a href="#contacto">Contacto</a>
+          <a href="#ubicacion">Ubicación</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="tel:094600138">📞 094 600 138</a>
+          <a href="tel:099807204">📞 099 807 204</a>
+          <a href="https://instagram.com/naranjoautomoviles" target="_blank" rel="noopener">📷 @naranjoautomoviles</a>
+          <p>🕐 Lun–Vie: 8:00 – 18:00</p>
+          <p>🕐 Sábados: Mañana</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Naranjo Automóviles. Todos los derechos reservados.</p>
+        <p>Ruta 11 km 88.500, Santa Lucía, Canelones, Uruguay</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════ WHATSAPP FLOTANTE ══════════════════ -->
+  <a href="https://wa.me/59894600138?text=Hola%2C%20vi%20su%20web%20y%20quisiera%20consultar%20sobre%20sus%20veh%C3%ADculos."
+     target="_blank" rel="noopener" class="wsp-float" id="wspFloat" title="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="30" height="30">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <!-- ══════════════════ MODAL: DETALLE AUTO ══════════════════ -->
+  <div class="overlay" id="overlayAuto" onclick="overlayClick(event,'overlayAuto')">
+    <div class="modal modal-auto" id="modalAuto">
+      <button class="modal-close" onclick="cerrarModal('overlayAuto')">✕</button>
+      <div id="modalAutoBody"></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════ MODAL: AGREGAR AUTO ══════════════════ -->
+  <div class="overlay" id="overlayAgregar" onclick="overlayClick(event,'overlayAgregar')">
+    <div class="modal modal-form" id="modalAgregar">
+      <button class="modal-close" onclick="cerrarModal('overlayAgregar')">✕</button>
+      <h2 class="modal-title">Agregar Vehículo</h2>
+      <form id="formAuto" onsubmit="guardarAuto(event)" class="form-auto">
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label>Marca *</label>
+            <input type="text" id="aMarca" required placeholder="Toyota">
+          </div>
+          <div class="form-group">
+            <label>Modelo *</label>
+            <input type="text" id="aModelo" required placeholder="Corolla">
+          </div>
+          <div class="form-group">
+            <label>Año *</label>
+            <input type="number" id="aAnio" required placeholder="2020" min="1990" max="2030">
+          </div>
+          <div class="form-group">
+            <label>Precio USD *</label>
+            <input type="number" id="aPrecio" required placeholder="15000" min="0">
+          </div>
+          <div class="form-group">
+            <label>Kilometraje *</label>
+            <input type="number" id="aKm" required placeholder="65000" min="0">
+          </div>
+          <div class="form-group">
+            <label>Motor</label>
+            <input type="text" id="aMotor" placeholder="1.8L 4 cilindros">
+          </div>
+          <div class="form-group">
+            <label>Combustible</label>
+            <select id="aCombustible">
+              <option value="Nafta">Nafta</option>
+              <option value="Diesel">Diesel</option>
+              <option value="GNC">GNC</option>
+              <option value="Híbrido">Híbrido</option>
+              <option value="Eléctrico">Eléctrico</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Transmisión</label>
+            <select id="aTransmision">
+              <option value="Manual">Manual</option>
+              <option value="Automática">Automática</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Color</label>
+            <input type="text" id="aColor" placeholder="Blanco Perla">
+          </div>
+          <div class="form-group">
+            <label>Puertas</label>
+            <select id="aPuertas">
+              <option value="4">4 puertas</option>
+              <option value="2">2 puertas</option>
+              <option value="5">5 puertas</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Descripción</label>
+          <textarea id="aDescripcion" rows="2" placeholder="Descripción del vehículo..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>URL Imagen principal *</label>
+          <input type="url" id="aImg1" required placeholder="https://...">
+        </div>
+        <div class="form-group">
+          <label>URL Imagen 2</label>
+          <input type="url" id="aImg2" placeholder="https://...">
+        </div>
+        <div class="form-group">
+          <label>URL Imagen 3</label>
+          <input type="url" id="aImg3" placeholder="https://...">
+        </div>
+        <button type="submit" class="btn-primary btn-full">Guardar vehículo</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ══════════════════ MODAL: ADMIN LOGIN ══════════════════ -->
+  <div class="overlay" id="overlayAdmin" onclick="overlayClick(event,'overlayAdmin')">
+    <div class="modal modal-admin-login">
+      <button class="modal-close" onclick="cerrarModal('overlayAdmin')">✕</button>
+      <div class="admin-login">
+        <div class="admin-login-icon">🔑</div>
+        <h2>Acceso Administrador</h2>
+        <p>Ingresá la contraseña para acceder al panel</p>
+        <div class="form-group">
+          <input type="password" id="adminPass" placeholder="Contraseña"
+                 onkeydown="if(event.key==='Enter')verificarAdmin()">
+        </div>
+        <button class="btn-primary btn-full" onclick="verificarAdmin()">Ingresar</button>
+        <div class="admin-error" id="adminError">❌ Contraseña incorrecta</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
